@@ -14,6 +14,7 @@ import com.example.weatherapp.model.WeatherResponse
 
 @Composable
 fun WeatherCard(weather: WeatherResponse) {
+    val iconUrl = "https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,11 +28,11 @@ fun WeatherCard(weather: WeatherResponse) {
             Text("City: ${weather.name}", fontSize = 20.sp)
             Text("Temperature: ${weather.main.temp} °C", fontSize = 20.sp)
             Text("Humidity: ${weather.main.humidity}%", fontSize = 20.sp)
-//            Image(
-//                painter = rememberAsyncImagePainter("http://openweathermap.org/img/wn/${weather.weather[0].icon}.png"),
-//                contentDescription = null,
-//                modifier = Modifier.size(50.dp)
-//            )
+            Image(
+                painter = rememberAsyncImagePainter(iconUrl),
+                contentDescription = null,
+                modifier = Modifier.size(80.dp)
+            )
         }
     }
 }
